@@ -1,12 +1,13 @@
 <template>
-    <main class="main-section">
+    <main class="main-section py-5">
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-5 g-3">
                 <div 
                     v-for="(album, i) in albumList"
                     :key="i"
+                    class="col"
                 >
-                    <CardsComponent/>
+                    <CardsComponent :item="album"/>
                 </div>
             </div>
         </div>        
@@ -25,14 +26,15 @@ export default {
     },
     data(){
         return {
-            albumList: []
+            albumList: [],
         }
     },
     created() {
         axios
             .get("https://flynn.boolean.careers/exercises/api/array/music")
             .then((res) => {
-                this.albumList = res.data;
+                this.albumList = res.data.response;
+                console.log(res.data.response)
             });    
     },
 };
@@ -47,5 +49,6 @@ export default {
         height: 100vh;
         widows: 100vw;
     }
+
     
 </style>
