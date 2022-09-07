@@ -46,9 +46,6 @@ export default {
 
     .main-section{
         background-color: $dark-blue;
-        height: 100vh;
-        widows: 100vw;
+        flex-grow: 1;
     }
-
-    
 </style>

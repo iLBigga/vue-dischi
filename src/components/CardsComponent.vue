@@ -1,10 +1,12 @@
 <template>
     <div class="custom_card">
         <img :src="item.poster">
-        <div class="card_body">
-            <p class="card_title">{{item.title}}</p>
-            <p class="card_author">{{item.author}}</p>
-            <p class="card_year">{{item.year}}</p>
+        <div class="card_body py-3">
+            <p class="title">{{item.title}}</p>
+            <div class="card_author">
+                <p class="author">{{item.author}}</p>
+                <p class="year">{{item.year}}</p>
+          </div>
         </div>
     </div>
 </template>
@@ -32,15 +34,20 @@ export default {
         background-color: $light-blue;
         text-align: center;
 
-            .card_title {
+            .title {
                 font-size: 1.3rem;
+                font-weight: bold;
                 text-transform: uppercase;
-            }
+            };
 
-            .card_author, .card_year{
+
+            .card_author {
+                font-size: 1.2rem;
+
+                .author, .year{
                 color: lightslategray;
                 margin: 0;
-            }
-    }
-
+                };
+            };        
+    };
 </style>
