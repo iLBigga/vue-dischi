@@ -4,8 +4,8 @@
         <div class="card_body py-3">
             <p class="title">{{item.title}}</p>
             <div class="card_author">
-                <p class="author">{{item.author}}</p>
-                <p class="year">{{item.year}}</p>
+                <div class="author">{{item.author}}</div>
+                <div class="year">{{item.year}}</div>
           </div>
         </div>
     </div>

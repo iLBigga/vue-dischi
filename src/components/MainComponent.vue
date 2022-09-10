@@ -1,9 +1,9 @@
 <template>
     <main class="main-section py-5">
         <div class="container">
-            <div class="row row-cols-5 g-3">
+            <div class="row row-cols-md-5 g-3">
                 <div 
-                    v-for="(album, i) in albumList"
+                    v-for="(album, i) in filteredGenre"
                     :key="i"
                     class="col"
                 >
@@ -21,20 +21,40 @@
 
 export default {
     name: "MainComponent",
-    components: {
-        CardsComponent,
+    props: {
+        genre: {
+            type: String,
+            default: '',
+        }
     },
     data(){
         return {
             albumList: [],
         }
     },
+    components: {
+        CardsComponent,
+    },
+    computed: {
+        filteredGenre() {
+            return this.albumList.filter((el) => {
+                const genre = el.genre
+                const find = this.genre
+
+                if(genre.includes(find)) {
+                    return true;
+                }
+
+                return false
+            })
+        },
+    },
+    
     created() {
         axios
             .get("https://flynn.boolean.careers/exercises/api/array/music")
             .then((res) => {
                 this.albumList = res.data.response;
-                console.log(res.data.response)
             });    
     },
 };

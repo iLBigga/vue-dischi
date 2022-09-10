@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderComponent/>
-    <MainComponent/>
+    <HeaderComponent @findGenre="onGenre"/>
+    <MainComponent :genre="searchGenre"/>
   </div>
 </template>
 
@@ -11,9 +11,20 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      searchGenre: '',
+    }
+  },
   components: {
       MainComponent,
       HeaderComponent,
+  },
+  methods: {
+    onGenre(data) {
+      this.searchGenre = data;
+      console.log('Ascolto l evento "findGenre"',data)
+    }
   }
 }
 </script>
